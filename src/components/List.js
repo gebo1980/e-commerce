@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import {getProducts} from '../api';
 import Loading from './Loading';
-import Producto from './Producto'
+import Item from './Item'
 import Header from './Header'
 
 class List extends Component {
@@ -8,36 +9,31 @@ class List extends Component {
         super(props);
         this.state = {
             isLoading: false,
-            productos: null
+            productos: null,
+            error: null,
         }
     }
-
-    componentDidMount() {
+    //Ejemplo con Promises
+    // componentDidMount() {
+    //     this.setState({isLoading: true});
+    //     getProducts().then(data => {
+    //         this.setState({isLoading: false, productos:data});
+    //     })
+    // }
+    async componentDidMount() {
         this.setState({isLoading: true});
-        setTimeout(() => {
-            this.setState({isLoading: false, productos: [{
-                id:0,
-                name: 'Manzana',
-                url: '',
-                thumbnail: 'https://images.app.goo.gl/xAjjMaR2N8xV2ywS7'
-            }, 
-            {
-                id:2,
-                name: 'Pera',
-                url: '',
-                thumbnail: 'https://images.app.goo.gl/1T1Sma5FmX42TaU7A'
-            }, 
-            {
-                id:3,
-                name: 'Platano',
-                url: '',
-                thumbnail: 'https://images.app.goo.gl/5c54fc6yhZy7rz6AA'
-            }]});
-        }, 2000);
+        try {
+            const productos = await getProducts();
+            this.setState({productos, isLoading: false});
+        } catch (error) {
+            this.setState({error, isLoading: false});
+        }
     }
-
-    render() {
-        const { productos, isLoading } = this.state;
+    render() {  
+        const { productos, isLoading, error } = this.state;
+        if (error) {
+            return (<div> ERROR </div>);
+        }
         if (isLoading) return (<Loading message="Cargando ..." />);
         return (<React.Fragment>
             <Header onClickAdd={this.handleAdd} />
@@ -45,7 +41,7 @@ class List extends Component {
                 <div className="grid-container">
                     {   
                         productos && productos.map((producto, i) => {
-                            return (<Producto key={i} data={producto} />)
+                            return (<Item key={i} data={producto} />)
                         })
                     }
                 </div>
