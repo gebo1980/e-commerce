@@ -3,6 +3,7 @@ import {getProducts} from '../api';
 import Loading from './Loading';
 import Item from './Item'
 import Header from './Header'
+import Login from './Login';
 
 class List extends Component {
     constructor(props) {
@@ -11,7 +12,10 @@ class List extends Component {
             isLoading: false,
             productos: null,
             error: null,
-        }
+            showAdd: false
+        };
+        this.handleAdd = this.handleAdd.bind(this);
+        this.handleCloseAdd = this.handleCloseAdd.bind(this);
     }
     //Ejemplo con Promises
     // componentDidMount() {
@@ -27,6 +31,22 @@ class List extends Component {
             this.setState({productos, isLoading: false});
         } catch (error) {
             this.setState({error, isLoading: false});
+        }
+    }
+    handleAdd(e) {
+        e.preventDefault();
+        this.setState({showAdd: true});
+    }
+    handleCloseAdd(reload) {
+        return () => {
+            if (reload) {
+                this.setState({isLoading: true, showAdd: false});
+                getProducts().then(data => this
+                    .setState({productos: data, isLoading: false, showAdd: false}))
+                    .catch(error => this.setState({showAdd: false}))
+            } else {
+                this.setState({showAdd: false})
+            }
         }
     }
     render() {  
@@ -46,6 +66,7 @@ class List extends Component {
                     }
                 </div>
             </div>
+            { this.state.showAdd && (<Login onClose={this.handleCloseAdd} />)}
         </React.Fragment>);
     }
 }

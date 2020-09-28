@@ -52,3 +52,13 @@ export const getProductDetail = ({idProduct}) => new Promise((resolve, reject) =
     }).catch(console.error);
 });
 
+export const getUserToken = async (user, password) => {
+    try {
+        console.log(user);
+        console.log(password);
+        return true;
+    } catch (error) {
+        console.log(error);
+        throw(error);        
+    }
+};
