@@ -12,10 +12,10 @@ class List extends Component {
             isLoading: false,
             productos: null,
             error: null,
-            showAdd: false
+            showLogin: false
         };
-        this.handleAdd = this.handleAdd.bind(this);
-        this.handleCloseAdd = this.handleCloseAdd.bind(this);
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleCloseLogin = this.handleCloseLogin.bind(this);
     }
     //Ejemplo con Promises
     // componentDidMount() {
@@ -33,19 +33,19 @@ class List extends Component {
             this.setState({error, isLoading: false});
         }
     }
-    handleAdd(e) {
+    handleLogin(e) {
         e.preventDefault();
-        this.setState({showAdd: true});
+        this.setState({showLogin: true});
     }
-    handleCloseAdd(reload) {
+    handleCloseLogin(reload) {
         return () => {
             if (reload) {
-                this.setState({isLoading: true, showAdd: false});
+                this.setState({isLoading: true, showLogin: false});
                 getProducts().then(data => this
-                    .setState({productos: data, isLoading: false, showAdd: false}))
-                    .catch(error => this.setState({showAdd: false}))
+                    .setState({productos: data, isLoading: false, showLogin: false}))
+                    .catch(error => this.setState({showLogin: false}))
             } else {
-                this.setState({showAdd: false})
+                this.setState({showLogin: false})
             }
         }
     }
@@ -56,8 +56,8 @@ class List extends Component {
         }
         if (isLoading) return (<Loading message="Cargando ..." />);
         return (<React.Fragment>
-            <Header onClickAdd={this.handleAdd} />
-            <div className="container">
+            <Header onClickLogin={this.handleLogin} />
+            {/* <div className="container">
                 <div className="grid-container">
                     {   
                         productos && productos.map((producto, i) => {
@@ -65,8 +65,8 @@ class List extends Component {
                         })
                     }
                 </div>
-            </div>
-            { this.state.showAdd && (<Login onClose={this.handleCloseAdd} />)}
+            </div> */}
+            { this.state.showLogin && (<Login onClose={this.handleCloseLogin} />)} 
         </React.Fragment>);
     }
 }
