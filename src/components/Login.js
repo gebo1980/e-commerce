@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {getUserToken} from '../api';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+
+const eye = <FontAwesomeIcon icon={faEye} />;
 
 class Login extends Component {
     constructor(props) {
@@ -9,9 +13,11 @@ class Login extends Component {
             hasError: false,
             showSending: false,
             user: '',
-            password: '' 
+            password: '',
+            passwordShow: false 
         }
-        this.handleSubmit = this.handleSubmit.bind(this); 
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this); 
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -31,20 +37,28 @@ class Login extends Component {
             })
         })
     }
+    togglePasswordVisibility(e) {
+        e.preventDefault();
+        this.setState({passwordShow: !this.state.passwordShow});
+    }
     render() {
         const {onClose} = this.props;
-        const {showSending, user, password, hasError} = this.state;
-        return (<div className="modal">
-            <div className="modal-content">
+        const {showSending, user, password, hasError, passwordShow} = this.state;
+
+        return (<div className="modal-login">
+            <div className="modal-login-content">
                 <span className="close" onClick={onClose(false)} >&times;</span>
                 <h2>Login</h2>
                 {showSending && (<span className="success">Enviando ...</span>)}
                 {hasError && (<div className="error">Usuario y/o password incorrecto.</div>)}
                 <form>
                     <label>Usuario</label>
-                    <input type="text" value={user} onChange={this.handleChange("user")} minLength="4" maxlenght="15" required></input>
+                    <input type="text" value={user} onChange={this.handleChange("user")} placeholder="Usuario" minLength="4" maxLength="15" required></input>
                     <label>Password</label>
-                    <input type="text" value={password} onChange={this.handleChange("password")} minLength="8" maxlenght="25" required></input>
+                    <div className="pass-wrapper">
+                        <input type={passwordShow?"text":"password"} value={password} onChange={this.handleChange("password")} placeholder="Password" minLength="8" maxLength="25" required></input>
+                        <i onClick={this.togglePasswordVisibility}>{eye}</i>
+                    </div>
                     <input type="submit" onClick={this.handleSubmit} value="Acceder" disabled={showSending}></input>
                 </form>
             </div>

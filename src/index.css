@@ -48,6 +48,11 @@ code {
   margin: 18px;
 }
 
+.header-image-cart {
+  float: right;
+  margin-right: 40px;
+}
+
 .container {
   margin-left: 10px;
   margin-right: 10px;
@@ -118,7 +123,7 @@ code {
   font-size: 31px;
 }
 
-.modal {
+.modal-login {
   display: block;
   position: fixed;
   z-index: 1;
@@ -131,23 +136,23 @@ code {
   background-color: rgba(0, 0, 0, 0.4); 
 }
 
+.modal-login-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%;
+}
+
 label {
   display: block;
   font-weight: bold;
 }
 
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
-  resize: vertical;
-}
-
-input[type=number], select, textarea {
+input[type=text], 
+input[type=number], 
+input[type=password], 
+select, textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -178,24 +183,35 @@ input[type=submit], input[type=button]:disabled {
   color: #666666;
 }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
 .close {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .close:hover
 .close.focus {
   color:black;
   text-decoration: none;
+  cursor: pointer;
+}
+
+/* Input Password */
+.pass-wrapper {
+  position: relative;
+  display: flex;
+  margin-bottom: 14px;
+}
+
+i {
+  position: absolute;
+  top: 15px;
+  right: 5%;
+}
+
+i:hover {
+  color: #00fcb6;
   cursor: pointer;
 }
