@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import Header from './Header';
 
 class Cart extends Component {
     render() {
         return (
             <React.Fragment>
-                <Header onClickLogin={this.handleLogin} />
                 <div className="container">
                     <div className="grid-container">
                         hola

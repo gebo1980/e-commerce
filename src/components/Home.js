@@ -14,8 +14,8 @@ class List extends Component {
             error: null,
             showLogin: false
         };
-        this.handleLogin = this.handleLogin.bind(this);
-        this.handleCloseLogin = this.handleCloseLogin.bind(this);
+        // this.handleLogin = this.handleLogin.bind(this);
+        // this.handleCloseLogin = this.handleCloseLogin.bind(this);
     }
     //Ejemplo con Promises
     // componentDidMount() {
@@ -33,22 +33,22 @@ class List extends Component {
             this.setState({error, isLoading: false});
         }
     }
-    handleLogin(e) {
-        e.preventDefault();
-        this.setState({showLogin: true});
-    }
-    handleCloseLogin(reload) {
-        return () => {
-            if (reload) {
-                this.setState({isLoading: true, showLogin: false});
-                getProducts().then(data => this
-                    .setState({productos: data, isLoading: false, showLogin: false}))
-                    .catch(error => this.setState({showLogin: false}))
-            } else {
-                this.setState({showLogin: false})
-            }
-        }
-    }
+    // handleLogin(e) {
+    //     e.preventDefault();
+    //     this.setState({showLogin: true});
+    // }
+    // handleCloseLogin(reload) {
+    //     return () => {
+    //         if (reload) {
+    //             this.setState({isLoading: true, showLogin: false});
+    //             getProducts().then(data => this
+    //                 .setState({productos: data, isLoading: false, showLogin: false}))
+    //                 .catch(error => this.setState({showLogin: false}))
+    //         } else {
+    //             this.setState({showLogin: false})
+    //         }
+    //     }
+    // }
     render() {  
         const { productos, isLoading, error } = this.state;
         if (error) {
@@ -56,7 +56,7 @@ class List extends Component {
         }
         if (isLoading) return (<Loading message="Cargando ..." />);
         return (<React.Fragment>
-            <Header onClickLogin={this.handleLogin} />
+            {/* <Header onClickLogin={this.handleLogin} /> */}
             {/* <div className="container">
                 <div className="grid-container">
                     {   
@@ -66,7 +66,7 @@ class List extends Component {
                     }
                 </div>
             </div> */}
-            { this.state.showLogin && (<Login onClose={this.handleCloseLogin} />)} 
+            {/* { this.state.showLogin && (<Login onClose={this.handleCloseLogin} />)}  */}
         </React.Fragment>);
     }
 }

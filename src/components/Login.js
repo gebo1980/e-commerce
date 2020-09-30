@@ -46,10 +46,9 @@ class Login extends Component {
         const {showSending, user, password, hasError, passwordShow} = this.state;
 
         return (<div className="modal-login">
-<div className="modal-login-body">
             <div className="modal-login-header">
                 <img src={require('../img/logo_ecommerce_small.png')} alt="TestShop"></img>
-                <span className="close" onClick={onClose(false)} >&times;</span>
+                <span className="close" onClick={onClose} >&times;</span>
             </div>
             <div className="modal-login-content">
                 {showSending && (<span className="success">Enviando ...</span>)}
@@ -67,7 +66,6 @@ class Login extends Component {
                     </center>
                 </form>
             </div>
-</div>
         </div>)
     }
 }

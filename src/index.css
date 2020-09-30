@@ -22,7 +22,7 @@ code {
 
 .header-title-text {
   display: inline-block;
-  margin: 5px;
+  margin: 5px 5px 5px 70px;
   font-size: 30px;
   font-weight: bold;
 }
@@ -138,21 +138,22 @@ code {
 
 .modal-login {
   display: block;
-  position: fixed;
+  position: center;
   z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  width: 35%;
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4); 
+  margin: 2% auto;
+  border: 1px solid #888;
+  border-radius: 8px;
 }
 
 .modal-login-body {
   margin: 10% auto;
   border: 1px solid #888;
   width: 40%;
+  border-radius: 8px;
 }
 
 .modal-login-header {
@@ -235,3 +236,151 @@ i:hover {
   color: #00fcb6;
   cursor: pointer;
 }
+
+
+/* Burguer Menu */
+.burguer-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* z-index: 99; */
+  /* opacity: 0.9; */
+  display: flex;
+  align-items: center;
+  background: #4d58f7;
+  /* width: 45px; */
+  color: white;
+  /* font-family: 'Lobster'; */
+}
+
+.burguer-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  transition: filter 0.5s ease;
+}
+
+.menuitem-container {
+  opacity: 100;
+  animation: 1s appear forwards;
+  animation-delay: 0.1s;
+}
+
+.menuitem {
+  /* font-family: 'Open Sans', sans-serif; */
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  margin: 0 5%;
+  cursor: pointer;
+  color: white;
+  transition: color 0.2s ease-in-out;
+  animation: 0.5s slideIn forwards;
+  animation-delay: 0.1s;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+.menuitem:hover {
+  color: gray;
+}
+
+.menuitem-line {
+  width: 90%;
+  height: 1px;
+  background: gray;
+  margin: 0 auto;
+  animation: 0.5s shrink forwards;
+  animation-delay: 0.1s;
+}
+
+.menu-container {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 20%;
+  display: block;
+  flex-direction: column;
+  background: #4d58f7;
+  opacity: 0.95;
+  transition: height 0.3s ease;
+  z-index: 2;
+}
+
+.menu-list {
+  padding-top: 3rem;
+}
+
+.menuButton-container {
+  height: 32px;
+  width: 32px;
+  margin: 25px 0 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.menuButton-line {
+  height: 4px;
+  width: 35px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.menuButton-lineTop-open {
+  transform: rotate(45deg);
+  transform-origin: top left;
+  margin-bottom: 5px;
+}
+.menuButton-lineTop-close {
+  transform: none;
+  transform-origin: top left;
+  margin-bottom: 5px;
+}
+
+.menuButton-lineMiddle-open {
+  opacity: 0;
+  transform: translateX(-16px);
+}
+.menuButton-lineMiddle-close {
+  opacity: 1;
+  transform: none;
+}
+
+.menuButton-lineBottom-open {
+  transform: translateX(-3px) translateY(7px) rotate(-45deg);
+  transform-origin: top left;
+  margin-top: 5px;
+}
+.menuButton-lineBottom-close {
+  transform: none;
+  transform-origin: top left;
+  margin-top: 5px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* color: props.color, */
+}
+
+.footer-line {
+  height: 1px;
+  width: 90%;
+  /* background: props.color, */
+}
+
+.footer-text {
+  padding: 0.5rem;
+}  
+
