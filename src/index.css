@@ -13,6 +13,10 @@ code {
     monospace;
 }
 
+.root-body {
+  overflow-y: auto;
+}
+
 /* HEADER */ 
 
 .header-content {
@@ -47,7 +51,35 @@ code {
   margin-right: 40px;
 }
 
+/* FOOTER */
+.footer-content {
+  position: fixed;
+  width: 100%;
+  height: 140px;
+  background-color: blue;
+  bottom: 0;
+}
 
+.footer-header {
+  text-align: right;
+  margin-right: 10%;
+  color: white; 
+  font-weight: bold;
+}
+
+.footer-header > i {
+  margin-left: 20px;
+}
+
+.footer-body-column {
+  float:left;
+  width: 30%;
+  color: white;
+}
+
+.footer-body-column > ul {
+  list-style: none;
+}
 
 .loader {
   position: fixed;
