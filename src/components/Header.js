@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart, faHome, faTags } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import Login from './Login';
 import Menu from './BurguerMenu/Menu';
@@ -9,6 +9,8 @@ import MenuButton from './BurguerMenu/MenuButton';
 import MenuItem from './BurguerMenu/MenuItem';
 
 const cart = <FontAwesomeIcon icon={faShoppingCart} size="2x" className="header-image-cart" color="#ff7f27" />;
+const home = <FontAwesomeIcon icon={faHome} className="menuitem-image" color="white" />;
+const tags = <FontAwesomeIcon icon={faTags} className="menuitem-image" color="white" />;
 
 class Header extends Component {
     constructor(props) {
@@ -34,11 +36,6 @@ class Header extends Component {
         this.setState({menuOpen: false});
     }
     render() {
-        const menu = ['About Us','Our Products','Services','FAQ','Contact Us']
-        const menuItems = menu.map((val, index) => {
-          return (
-            <MenuItem key={index} onClick={()=>{this.handleLinkClick();}}>{val}</MenuItem>)
-        });
         return (
             <React.Fragment>
                 <div className="header-content">
@@ -52,9 +49,20 @@ class Header extends Component {
                     <input type="button" onClick={this.handleLogin} value="Entrar" className="header-button-add"></input>
                 </div>
                 <Menu open={this.state.menuOpen}>
-                    {menuItems}
+                    <Link to="/">
+                        <MenuItem key="1" onClick={()=>{this.handleLinkClick();}}>
+                            <i>{home}</i>
+                            Inicio
+                        </MenuItem>
+                    </Link>
+                    <Link to="/cart">
+                        <MenuItem key="2" onClick={()=>{this.handleLinkClick();}}>
+                            <i>{tags}</i>
+                            Ofertas
+                        </MenuItem>
+                    </Link>
                 </Menu>
-                { this.state.showLogin && (<Login onClose={this.handleCloseLogin} />)} 
+                <center>{ this.state.showLogin && (<Login onClose={this.handleCloseLogin} />)}</center> 
             </React.Fragment>
         )
     }    
