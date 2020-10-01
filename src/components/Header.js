@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import Login from './Login';
-import Footer from './BurguerMenu/Footer';
 import Menu from './BurguerMenu/Menu';
 import MenuButton from './BurguerMenu/MenuButton';
 import MenuItem from './BurguerMenu/MenuItem';

@@ -17,7 +17,9 @@ code {
 
 .header-content {
   width: 100%;
-  background-color: #4d58f7;
+  height: 83px;
+  /* background-color: #4d58f7; */
+  background-color: blue;
 }
 
 .header-title-text {
@@ -157,7 +159,7 @@ code {
 }
 
 .modal-login-header {
-  background-color: #4d58f7;  
+  background-color: blue;  
 }
 
 .modal-login-content {
@@ -247,7 +249,7 @@ i:hover {
   /* opacity: 0.9; */
   display: flex;
   align-items: center;
-  background: #4d58f7;
+  background: blue;
   /* width: 45px; */
   color: white;
   /* font-family: 'Lobster'; */
@@ -269,7 +271,6 @@ i:hover {
 }
 
 .menuitem {
-  /* font-family: 'Open Sans', sans-serif; */
   font-size: 1.2rem;
   padding: 1rem 0;
   margin: 0 5%;
@@ -295,22 +296,22 @@ i:hover {
 }
 
 .menu-container {
-  position: relative;
-  top: 0;
+  position: absolute;
+  top: 83px;
   left: 0;
-  height: 100%;
+  height: auto;
   width: 20%;
-  display: block;
+  display: flex;
   flex-direction: column;
-  background: #4d58f7;
+  background: blue;
   opacity: 0.95;
   transition: height 0.3s ease;
   z-index: 2;
 }
 
-.menu-list {
+/* .menu-list {
   padding-top: 3rem;
-}
+} */
 
 .menuButton-container {
   height: 32px;
@@ -361,26 +362,3 @@ i:hover {
   transform-origin: top left;
   margin-top: 5px;
 }
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* color: props.color, */
-}
-
-.footer-line {
-  height: 1px;
-  width: 90%;
-  /* background: props.color, */
-}
-
-.footer-text {
-  padding: 0.5rem;
-}  
-
